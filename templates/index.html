@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('https://images.pexels.com/photos/289756/pexels-photo-289756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>{{params["site-name"]}}</h1>
+                            <span class="subheading">A Lifestyle Blog</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- TODO : feth posts from database using for loop -->
+                    <!-- Post preview-->
+                    {% for post in posts %}
+
+                        <div class="post-preview">
+                            <a href="/post/{{ post.slug }}">
+                                <h2 class="post-title">{{ post.title }}</h2>
+                                {% if post.subtitle != None %}
+                                    <h3 class="post-subtitle">{{post.subtitle}}</h3>
+                                {% endif %}
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="/about">Admin</a>
+                                on {{post.date}}
+                            </p>
+                            <p>{{post.content[0:200]}}</p>
+                        </div>
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                    {% endfor %}
+                    <!-- Pager-->
+
+                    {% if page > 0 %}
+                        <div class="prev-btn">
+                            <div class="d-flex justify-content-start mb-4"><a class="btn btn-primary text-uppercase " href="/page={{page - 1}}">← Prev</a></div>
+                        </div>
+                    {% endif%}
+                    {% if (page * range) + range < size %}
+                        <div class="next-btn">
+                            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase float-right" href="/page={{page + 1}}">Next →</a></div>
+                        </div>
+                    {% endif%}    
+
+                </div>
+            </div>
+        </div>
+        
+{% endblock %}

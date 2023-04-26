@@ -1,0 +1,16 @@
+{
+    "params":
+    {
+        "site-name" : "Train of Thoughts",
+        "local_server" : "True",
+        "local_uri" : "mysql://root:@localhost/databasename",
+        "prod_uri" : "mysql://root:@localhost/databasename",
+        "gmail-user" : "demo@gmail.com",
+        "gmail-password" : "gxdorsnawslbtfl",
+        "no-of-posts" : "3",
+        "admin-user" : "username",
+        "admin-password" : "password",
+        "upload_location" : "location"
+
+    }
+}
